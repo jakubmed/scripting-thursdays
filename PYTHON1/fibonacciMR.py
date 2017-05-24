@@ -10,7 +10,7 @@ def fibonacci(n):
 
 while True:
    try:
-      num=int(input("How many Fibonnaci's numbers do you want me to print out? "))
+      num=int(input("How many Fibonnaci numbers do you want me to print out? "))
       break
    except:
       print("You need to insert an integer. Let's try it again. ")
