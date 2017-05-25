@@ -8,7 +8,8 @@ def fib_recursive(n, output_array):
         return 1
     else:
         fib = fib_recursive(n-1, output_array) + fib_recursive(n-2, output_array)
-        output_array.append(fib)
+        if fib != output_array[-1]:
+            output_array.append(fib)
         return fib
 
 
