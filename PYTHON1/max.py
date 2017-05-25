@@ -5,7 +5,12 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-list=[int(elem) for elem in '4 3 1'.split()]
+print("Enter numbers")
+inp=input()
+list=inp.split()
+for i in range(len(list)):
+        list[i]=int.list[i]
+
 new_list=sorted(list)
 print(*new_list,sep='\n')
 print("Maximum je",new_list[-1])
