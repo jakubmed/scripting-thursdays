@@ -1,9 +1,5 @@
 #!/usr/bin/env python
-from __future__ import division
-import math
 import sys
-import matplotlib.pyplot as plt
-import numpy as np
 
 print("Zadej cislo:")
 cislo=0
@@ -12,8 +8,8 @@ while True:
     try:
         cislo=int(input())
     except ValueError:
-        print("To neni integer!")
-        quit()
+        print("To neni integer! Zopakuj cislo")
+        pass
     else:
         print("V pohode")
         break
