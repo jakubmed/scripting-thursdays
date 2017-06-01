@@ -1,0 +1,32 @@
+Zadani najdete v citelnejsi forme na Dropboxu :)
+
+
+
+V soubor coors.dat jsou data z QM programu obsahující XYZ souřadnice, rychlosti a síly pro N atomů. Bohužel, program zapisuje všechny tyto data do jednoho řádku a není tak příliš čitelný.
+Na začátku souboru je hlavička s vysvětlivkami mezi hastagy #
+
+#####
+Iterace   čas   X1 Y1 Z1   X2 Y2 Z2 … XN YN ZN   VX1 VY1 VZ1   VX2 VY2 VZ2 …… VXN VYN VZN   FX1 FY1 FZ1   FX2 FY2 FZ2 …… FXN FYN FZN
+####
+
+Vytvořte skriptík, který projde a zpracuje datový soubor coors.dat 
+1.)   Nějakým způsobem přeskočí hlavičku a začne číst až za posledním ####### (pokud nevíte jak na to, smažte hlavičku). Něco jako vlastní „grep“ v pythonu. 
+2.)   Z počtu sloupců zjistěte počet atomů, přičemž víte, že pro každý atomy jsou v řádku 3 souřadnice, 3 síly, 3 rychlosti = 9N. Každý řádek začíná číslem iterace a časovým krokem(2+) a celkový počet čísel v řádku je tedy 9N+2 čísel. 
+3.)   Projde jednotlivé řádky a extrahuje z nich zvlášť souřadnice, rychlosti a síly a následně je zapíše do 3 samostatných souborů. 
+
+Formát u souboru se souřadnicemi by měl byt čitelný jako movie v moldenu, tj.
+   První řádek: počet atomů
+   Druhý řádek: komentář obsahující iteraci a časový krok
+
+      Atom1 X Y Z 
+      …
+      AtomN X Y Z
+      (Souřadnice je třeba převést z Bohr na Angstrom 1 Bohr = 1 a0 = 0.52917720859 Å)
+
+4.)   Pro první dva atomy vytvořte histogram z mezijaderných vzdálenosti a vytiskněte jej jako .png obrázek.
+5.)   V prvním řádku je u druhého čísla záměrně chyba (BLA.60256568), tj. je potřeba nějakým způsobem ošetřit vstup: 
+   -  celý řádek ignorovat
+   -  nahradit vadnou část BLA nějakým číslem
+
+
+
