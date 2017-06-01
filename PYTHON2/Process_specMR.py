@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from numpy import histogram as hist
 import matplotlib.pyplot as plt
+import scipy
 
 ############################################
 imp_file = "spectrum"
@@ -26,8 +27,5 @@ print(len(h[1]))
 #plt.plot(h[0],h[1])
 #plt.show()
 
-with open(new_file,'w') as f:
-   f.write(dataset)
-
-
-
+#pyasl.instrBroadGaussFast(h[1], h[0], 10000, edgeHandling="firstlast", fullout=True)
+scipy.ndimage.filters.gaussian_filter(input, sigma, order=0, output=None, mode='reflect', cval=0.0, truncate=4.0)
