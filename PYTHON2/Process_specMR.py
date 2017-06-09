@@ -7,33 +7,44 @@ from scipy.optimize import curve_fit
 
 ############################################
 imp_file = "spectrum"
-hist_bin = 0.05
+bin_nums = 500
+initial_guess = [51,1,11,25,1,13,15,1,17]
+# hint [height1, width1, peak position1,height2, width2, peak position2, height3, width3, peak position3]
 ############################################
 
-#reading the imput file
+#read the imput file
 with open (imp_file, "r") as f:
    dataset = []
    for line in f:
       num = float(line)
       dataset.append(num)
 
-#making histogram with 500 bins (a tuple is created)
-h = hist(dataset, bins=500, range=None, normed=False, weights=None, density=None)
+#make histogram with 500 bins (a tuple is created)
+h = hist(dataset, bins=bin_nums, range=None, normed=False, weights=None, density=None)
 
+#divide a tuple into separate strings
 x = h[1]
 xdata = x[:-1]
 ydata = h[0]
 
+#plot histogram
 plt.plot(xdata, ydata, 'b-', label='data')
-#plt.show()
 
+#define fitting function: 3 gaussians in this case
 def func(x, a1, b1, c1, a2, b2, c2, a3, b3, c3):
-    return a1 * np.exp(-b1 *(x - c1)**2) + a2 * np.exp(-b2 *( x - c2)**2) + a3 * np.exp(-b3 * (x - c3)**2)
+    return a1 * np.exp(-b1 * (x - c1)**2) + a2 * np.exp(-b2 * (x - c2)**2) + a3 * np.exp(-b3 * (x - c3)**2)
 
-popt, pcov = curve_fit(func, xdata, ydata)
+#define initial guess
+guess = np.array(initial_guess,dtype=float)
 
-#plt.plot(xdata, func(xdata, *popt), 'r-', label='fit')
+#curve fitting
+popt, pcov = curve_fit(func, xdata, ydata, guess)
 
+print(popt)
+
+#plot the fitting function
+plt.plot(xdata, func(xdata, *popt), 'r-', label='fit')
+plt.show()
 
 
 
